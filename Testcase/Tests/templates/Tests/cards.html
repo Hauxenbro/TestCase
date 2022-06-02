@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block site-title %}Cards{% endblock %}
+{% block body %}
+{% if cards %}
+<form method="get">
+    {{ cards.form.as_p }}
+    <button type="submit">Искать</button>
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Seria</th>
+        <th scope="col">Number</th>
+        <th scope="col">Creation date</th>
+        <th scope="col">Finish date</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for card in cards.qs %}
+    <tr>
+        <th scope="row">{{ card.pk }}</th>
+        <td>{{ card.seria }}</td>
+        <td>{{ card.number }}</td>
+        <td>{{ card.creation_date }}</td>
+        <td>{{ card.finish_date }}</td>
+        <td>{{ card.status }}</td>
+        <td><a href="{{ card.get_absolute_url }}"><button type="button" class="btn btn-primary">Изменить</button></a></td>
+        <td><a href="{% url 'delete' card.pk %}"><button type="button" class="btn btn-danger">Удалить</button></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<hr>
+<p>No cards in database...</p>
+{% endif %}
+{% endblock %}

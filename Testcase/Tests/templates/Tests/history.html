@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block site-title %}Card{% endblock %}
+{% block body %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">{{ history.pk }}</th>
+        <td>{{ history.date }}</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block site-title %}Card{% endblock %}
+{% block body %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Seria</th>
+        <th scope="col">Number</th>
+        <th scope="col">Creation date</th>
+        <th scope="col">Finish date</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">{{ card.pk }}</th>
+        <td>{{ card.seria }}</td>
+        <td>{{ card.number }}</td>
+        <td>{{ card.creation_date }}</td>
+        <td>{{ card.finish_date }}</td>
+        <td>{{ card.status }}</td>
+    </tr>
+    </tbody>
+</table>
+<a href="{% url 'activate' card.pk %}"><button>Activate</button></a>
+<a href="{% url 'history' card.pk %}"><button>History</button></a>
+<a href="{% url 'edit' card.pk %}"><button>Edit</button></a>
+{% endblock %}
